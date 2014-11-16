@@ -1,0 +1,11 @@
+{
+  "auth0": {
+    "domain": "SET",
+    "clientId": "SET",
+    "clientSecret": "SET"
+  },
+  "mongodb": {
+    "uri": "mongodb://localhost/boilerplate",
+    "testUri": "mongodb://localhost/test"
+  }
+}

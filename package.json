@@ -1,0 +1,44 @@
+{
+  "name": "angularjs-hapi-auth0-boilerplate",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "node_modules/.bin/bower install && node_modules/.bin/grunt production"
+  },
+  "author": "",
+  "licenses": {
+    "type": "MIT"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-bump": "0.0.6",
+    "grunt-coffeelint": "~0.0.10",
+    "grunt-contrib-clean": "^0.4.1",
+    "grunt-contrib-coffee": "^0.7.0",
+    "grunt-contrib-concat": "^0.3.0",
+    "grunt-contrib-copy": "^0.4.1",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-less": "~0.11.0",
+    "grunt-contrib-uglify": "^0.2.7",
+    "grunt-contrib-watch": "^0.4.4",
+    "grunt-conventional-changelog": "^0.1.2",
+    "grunt-html2js": "^0.1.9",
+    "grunt-ngmin": "0.0.2",
+    "grunt-tape": "0.0.2",
+    "tape": "^3.0.3"
+  },
+  "dependencies": {
+    "auth0": "^0.8.0",
+    "boom": "^2.6.0",
+    "bower": "^1.3.12",
+    "express-jwt": "^0.4.0",
+    "good": "^4.0.0",
+    "good-console": "^2.0.1",
+    "good-file": "^3.1.0",
+    "grunt-cli": "^0.1.13",
+    "hapi": "^7.5.2",
+    "hapi-auth-jwt": "^1.1.0",
+    "mongoose": "^3.8.19"
+  }
+}
