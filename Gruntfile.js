@@ -18,6 +18,7 @@ module.exports = function ( grunt ) {
   grunt.loadNpmTasks('grunt-ngmin');
   grunt.loadNpmTasks('grunt-html2js');
   grunt.loadNpmTasks('grunt-tape');
+  grunt.loadNpmTasks("grunt-contrib-jasmine");
 
   grunt.file.setBase('client/');
 
@@ -379,6 +380,19 @@ module.exports = function ( grunt ) {
       }
     },
 
+    jasmine: {
+      src: [
+        '<%= vendor_files.js %>',
+        '<%= test_files.js %>',
+        '<%= build_dir %>/src/**/*.js',
+        '<%= html2js.common.dest %>',
+        '<%= html2js.app.dest %>'
+      ],
+      options: {
+        specs: "<%= app_files.jsunit %>"
+      }
+    },
+
     /**
      * And for rapid development, we have a watch set up that checks to see if
      * any of the files listed below change, and then to execute the listed 
@@ -543,7 +557,7 @@ module.exports = function ( grunt ) {
     'less:compile', 'copy:compile_assets', 'ngmin', 'concat:compile_js', 'uglify', 'index:compile'
   ]);
 
-  grunt.registerTask('test', ['tape']);
+  grunt.registerTask('test', ['tape', 'jasmine']);
 
   /**
    * A utility function to get all app JavaScript sources.
