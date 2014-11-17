@@ -1,5 +1,5 @@
 
-module.exports = function (server, mountpoint, User) {
+module.exports = function (server, mountpoint, User, acl) {
 
     var Handler = new (require('hapi-mongoose-handler'))({model: User});
 
@@ -7,7 +7,8 @@ module.exports = function (server, mountpoint, User) {
         method: "GET",
         path: mountpoint + '/users',
         config: {
-            handler: Handler.find()
+            handler: acl.hapiAllowed('users', 'list', Handler.find()),
+            auth: 'auth0'
         }
     });
 
@@ -15,7 +16,8 @@ module.exports = function (server, mountpoint, User) {
         method: "POST",
         path: mountpoint + '/users',
         config: {
-            handler: Handler.create()
+            handler: acl.hapiAllowed('users', 'create', Handler.create()),
+            auth: 'auth0'
         }
     });
 
@@ -23,7 +25,8 @@ module.exports = function (server, mountpoint, User) {
         method: "GET",
         path: mountpoint + '/users/{_id}',
         config: {
-            handler: Handler.findOne()
+            handler: acl.hapiAllowed('users', 'read', Handler.findOne()),
+            auth: 'auth0'
         }
     });
 
@@ -31,7 +34,8 @@ module.exports = function (server, mountpoint, User) {
         method: "PUT",
         path: mountpoint + '/users',
         config: {
-            handler: Handler.update()
+            handler: acl.hapiAllowed('users', 'update', Handler.update()),
+            auth: 'auth0'
         }
     });
 
@@ -39,7 +43,8 @@ module.exports = function (server, mountpoint, User) {
         method: "DELETE",
         path: mountpoint + '/users/{_id}',
         config: {
-            handler: Handler.delete() // jshint ignore:line
+            handler: acl.hapiAllowed('users', 'delete',Handler.delete()), // jshint ignore:line
+            auth: 'auth0'
         }
     });
 

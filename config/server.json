@@ -7,5 +7,9 @@
   "mongodb": {
     "uri": "mongodb://localhost/boilerplate",
     "testUri": "mongodb://localhost/test"
+  },
+  "server": {
+    "host": "localhost",
+    "port": "8000"
   }
 }

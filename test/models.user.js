@@ -7,7 +7,7 @@ nconf.argv().env('_');
 
 nconf.file({file: 'config/server.json'});
 
-var db = require('../server/boot/db.js')(nconf);
+var db = require('../server/boot/db.js')(nconf, true);
 
 test('Create and find simple user', function (t) {
     t.plan(3);

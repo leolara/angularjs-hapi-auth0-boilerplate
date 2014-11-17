@@ -14,10 +14,6 @@
     <!-- compiled JavaScript --><% scripts.forEach( function ( file ) { %>
     <script type="text/javascript" src="<%= file %>"></script><% }); %>
 
-    <!-- it's stupid to have to load it here, but this is for the +1 button -->
-    <script type="text/javascript" src="https://apis.google.com/js/plusone.js">
-      { "parsetags": "explicit" }
-    </script>
   </head>
   <body>
     <div class="container">
@@ -47,28 +43,30 @@
                 Home
               </a>
             </li>
-            <li ui-sref-active="active">
-              <a href ui-sref="about">
-                <i class="fa fa-info-circle"></i>
-                What is it?
+            <li ng-show="auth.isAuthenticated" ui-sref-active="active">
+              <a href ui-sref="messages_create">
+                <i class="fa fa-plus"></i>
+                Create Message
               </a>
             </li>
-            <li>
-              <a href="https://github.com/ngbp/ngbp#readme">
-                <i class="fa fa-book"></i>
-                Read the Docs
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li ng-show="auth.isAuthenticated">
+              <a>
+                <i class="fa fa-user"></i>
+                {{ auth.profile.email }}
               </a>
             </li>
-            <li>
-              <a href="https://github.com/ngbp/ngbp">
-                <i class="fa fa-github-alt"></i>
-                Github
+            <li ng-hide="auth.isAuthenticated">
+              <a ng-click="login()" href="javascript:;">
+                <i class="fa fa-sign-in"></i>
+                Login
               </a>
             </li>
-            <li>
-              <a href="https://github.com/ngbp/ngbp/issues">
-                <i class="fa fa-comments"></i>
-                Support
+            <li ng-show="auth.isAuthenticated">
+              <a ng-click="logout()" href="javascript:;">
+                <i class="fa fa-sign-out"></i>
+                Log out
               </a>
             </li>
           </ul>

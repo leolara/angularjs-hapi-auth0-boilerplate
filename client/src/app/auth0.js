@@ -42,7 +42,6 @@ angular.module( 'ngBoilerplate')
       store.get('profile');
       store.get('token');
       $location.path('/');
-      $http.get('/checkjwt');
     }, function() {
       // Error callback
     });

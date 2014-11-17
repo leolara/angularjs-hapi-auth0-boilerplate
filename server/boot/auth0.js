@@ -1,7 +1,7 @@
 
 var Auth0 = require('auth0');
 
-module.exports = function (server, config, User, cb) {
+module.exports = function (server, config, User, acl, cb) {
 
     var auth0_api = new Auth0({
         domain:       config.get('auth0:domain'),
@@ -21,19 +21,28 @@ module.exports = function (server, config, User, cb) {
                 return;
             }
             user = new User({ email: auth0_user.email, auth0_id: auth0_user.user_id});
-            user.save(function (err) {
+            user.save(function (err, user) {
                 if (err) {
                     server.log(['auth0', 'error', 'db'], err);
                     return;
                 }
-                server.log(['auth0', 'info', 'db', 'created'], user);
-                cb(null, user);
+                server.log(['auth0', 'info', 'db', 'created'], 'New user created');
+                // Add to standard user role
+                acl.addUserRoles(user._id.toString(), 'stduser', function (err) {
+                    if (err) {
+
+                    }
+                    server.log(['auth0', 'info', 'db', 'created'], 'New user roles added');
+                    server.log(['auth0', 'info', 'db', 'created'], user);
+                    cb(null, user);
+                });
             });
         });
     }
 
     server.pack.register(require('hapi-auth-jwt'), function (err) {
         if (err) {
+            server.log(['auth0', 'error', 'schema'], err);
             return cb(err);
         }
         server.auth.strategy('auth0', 'jwt', {
@@ -51,7 +60,7 @@ module.exports = function (server, config, User, cb) {
                     });
                 });
             },
-            key: new Buffer(config.auth0.clientSecret, 'base64')
+            key: new Buffer(config.get('auth0:clientSecret'), 'base64')
         });
 
         return cb();

@@ -12,9 +12,8 @@ module.exports = function (server) {
         plugin: require('good'),
         options: options
     }, function (err) {
-
         if (err) {
-            console.log(err);
+            server.log(['error'], err);
             return;
         }
     });

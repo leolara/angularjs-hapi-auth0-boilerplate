@@ -1,16 +1,15 @@
 angular.module( 'ngBoilerplate', [
   'templates-app',
   'templates-common',
-  'ngBoilerplate.home',
-  'ngBoilerplate.about',
   'ui.router',
   'auth0',
   'angular-storage',
-  'angular-jwt'
+  'angular-jwt',
+  'ngResource'
 ])
 
 .config( function myAppConfig ( $stateProvider, $urlRouterProvider ) {
-  $urlRouterProvider.otherwise( '/home' );
+  $urlRouterProvider.otherwise( '/' );
 })
 
 .run( function run (auth) {
