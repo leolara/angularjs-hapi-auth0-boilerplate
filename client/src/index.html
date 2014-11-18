@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="ngBoilerplate" ng-controller="AppCtrl">
+<html ng-controller="AppCtrl">
   <head>
     <title ng-bind="pageTitle"></title>
 
@@ -13,6 +13,12 @@
 
     <!-- compiled JavaScript --><% scripts.forEach( function ( file ) { %>
     <script type="text/javascript" src="<%= file %>"></script><% }); %>
+
+    <script>
+      angular.element(document).ready(function() {
+        angular.bootstrap(document, ['ngBoilerplate']);
+      });
+    </script>
 
   </head>
   <body>

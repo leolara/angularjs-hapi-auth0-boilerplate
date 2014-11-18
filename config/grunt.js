@@ -71,7 +71,18 @@ module.exports = {
       'vendor/a0-angular-storage/dist/angular-storage.js',
       'vendor/angular-jwt/dist/angular-jwt.js',
       'vendor/auth0-angular/build/auth0-angular.js',
-      'vendor/angular-resource/angular-resource.js',
+      'vendor/angular-resource/angular-resource.js'
+    ],
+    js_concat: [
+      'vendor/angular/angular.js',
+      'vendor/angular-bootstrap/ui-bootstrap-tpls.min.js',
+      'vendor/angular-ui-router/release/angular-ui-router.js',
+      'vendor/angular-ui-utils/modules/route/route.js',
+      'vendor/angular-cookies/angular-cookies.js',
+      'vendor/a0-angular-storage/dist/angular-storage.js',
+      'vendor/angular-jwt/dist/angular-jwt.js',
+      'vendor/auth0-angular/build/auth0-angular.js',
+      'vendor/angular-resource/angular-resource.js'
     ],
     css: [
     ],

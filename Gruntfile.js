@@ -15,10 +15,10 @@ module.exports = function ( grunt ) {
   grunt.loadNpmTasks('grunt-conventional-changelog');
   grunt.loadNpmTasks('grunt-bump');
   grunt.loadNpmTasks('grunt-coffeelint');
-  grunt.loadNpmTasks('grunt-ngmin');
   grunt.loadNpmTasks('grunt-html2js');
   grunt.loadNpmTasks('grunt-tape');
   grunt.loadNpmTasks("grunt-contrib-jasmine");
+  grunt.loadNpmTasks('grunt-ng-annotate');
 
   grunt.file.setBase('client/');
 
@@ -151,6 +151,22 @@ module.exports = function ( grunt ) {
             expand: true
           }
         ]
+      },
+      auth0_lock: {
+        files: [
+          {
+            src: 'vendor/auth0-lock/build/auth0-lock.js',
+            dest: '<%= compile_dir %>/vendor/auth0-lock/build/auth0-lock.js'
+          }
+        ]
+      },
+      auth0_app: {
+        files: [
+          {
+            src: 'src/app/auth0.js',
+            dest: '<%= compile_dir %>/src/app/auth0.js'
+          }
+        ]
       }
     },
 
@@ -178,9 +194,10 @@ module.exports = function ( grunt ) {
           banner: '<%= meta.banner %>'
         },
         src: [ 
-          '<%= vendor_files.js %>', 
-          'module.prefix', 
-          '<%= build_dir %>/src/**/*.js', 
+          '<%= vendor_files.js_concat %>',
+          'module.prefix',
+          '<%= build_dir %>/src/**/*.js',
+          '!<%= build_dir %>/src/app/auth0.js',
           '<%= html2js.app.dest %>', 
           '<%= html2js.common.dest %>', 
           'module.suffix' 
@@ -210,10 +227,10 @@ module.exports = function ( grunt ) {
     },
 
     /**
-     * `ng-min` annotates the sources before minifying. That is, it allows us
+     * `ngAnnotate` annotates the sources before minifying. That is, it allows us
      * to code without the array syntax.
      */
-    ngmin: {
+    ngAnnotate: {
       compile: {
         files: [
           {
@@ -232,7 +249,7 @@ module.exports = function ( grunt ) {
     uglify: {
       compile: {
         options: {
-          banner: '<%= meta.banner %>'
+          banner: '<%= meta.banner %>',
         },
         files: {
           '<%= concat.compile_js.dest %>': '<%= concat.compile_js.dest %>'
@@ -373,7 +390,9 @@ module.exports = function ( grunt ) {
       compile: {
         dir: '<%= compile_dir %>',
         src: [
+          'vendor/auth0-lock/build/auth0-lock.js',
           '<%= concat.compile_js.dest %>',
+          'src/app/auth0.js',
           '<%= vendor_files.css %>',
           '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css'
         ]
@@ -554,7 +573,7 @@ module.exports = function ( grunt ) {
    * minifying your code.
    */
   grunt.registerTask( 'compile', [
-    'less:compile', 'copy:compile_assets', 'ngmin', 'concat:compile_js', 'uglify', 'index:compile'
+    'less:compile', 'copy:compile_assets', 'copy:auth0_lock', 'copy:auth0_app', 'ngAnnotate', 'concat:compile_js', 'uglify',  'index:compile'
   ]);
 
   grunt.registerTask('test', ['tape', 'jasmine']);

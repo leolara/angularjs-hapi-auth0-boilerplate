@@ -1,19 +1,18 @@
 angular.module( 'ngBoilerplate')
 
-.config( function configAuth0 ( authProvider, $httpProvider, jwtInterceptorProvider ) {
+.config(['authProvider', '$httpProvider', 'jwtInterceptorProvider', function configAuth0 ( authProvider, $httpProvider, jwtInterceptorProvider ) {
     authProvider.init({
       domain: 'leolara.auth0.com',
       clientID: 'DSYK2m7YMqwY64IYOQWCXUSql9KhvqtE'
     });
     jwtInterceptorProvider.tokenGetter = function(store) {
-      // Return the saved token
       return store.get('token');
     };
 
     $httpProvider.interceptors.push('jwtInterceptor');
-})
+}])
 
-.run( function runAuth0 ( $rootScope, auth, store, jwtHelper, $location, $http ) {
+.run(['$rootScope', 'auth', 'store', 'jwtHelper', '$location', function runAuth0 ( $rootScope, auth, store, jwtHelper, $location ) {
 
   auth.hookEvents();
 
@@ -54,6 +53,6 @@ angular.module( 'ngBoilerplate')
   };
 
   $rootScope.auth = auth;
-})
+}])
 
 ;

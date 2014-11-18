@@ -19,7 +19,7 @@ angular.module( 'ngBoilerplate')
  * will handle ensuring they are all available at run-time, but splitting it
  * this way makes each module more "self-contained".
  */
-.config(function config( $stateProvider ) {
+.config(['$stateProvider', function config( $stateProvider ) {
   $stateProvider.state( 'home', {
     url: '/',
     views: {
@@ -30,16 +30,16 @@ angular.module( 'ngBoilerplate')
     },
     data:{ pageTitle: 'Home' }
   });
-})
+}])
 
 /**
  * And of course we define a controller for our route.
  */
-.controller( 'HomeCtrl', function HomeController( $scope, Message ) {
+.controller( 'HomeCtrl', ['$scope', 'Message', function HomeController( $scope, Message ) {
   Message.query(function (messages) {
     $scope.messages = messages;
   });
-})
+}])
 
 ;
 
