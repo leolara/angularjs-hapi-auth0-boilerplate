@@ -1,7 +1,7 @@
 
 module.exports = function (server, mountpoint, User, acl) {
 
-    var Handler = new (require('hapi-mongoose-handler'))({model: User});
+    var Handler = new (require('../../workarround/hapi-mongoose-handler'))({model: User});
 
     server.route({
         method: "GET",

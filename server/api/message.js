@@ -1,7 +1,7 @@
 
 module.exports = function (server, mountpoint, Message, acl) {
 
-    var Handler = new (require('hapi-mongoose-handler'))({model: Message});
+    var Handler = new (require('../../workarround/hapi-mongoose-handler'))({model: Message});
 
     // List all messages, no authentication needed
     server.route({
