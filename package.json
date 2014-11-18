@@ -42,6 +42,7 @@
     "grunt-ngmin": "0.0.2",
     "hapi": "^7.5.2",
     "hapi-auth-jwt": "^1.1.0",
-    "mongoose": "^3.8.19"
+    "mongoose": "^3.8.19",
+    "nconf": "^0.6.9"
   }
 }
