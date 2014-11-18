@@ -1,6 +1,3 @@
-
-console.log('messages create start');
-
 angular.module( 'ngBoilerplate')
 
 .config(['$stateProvider', function config( $stateProvider ) {
@@ -25,5 +22,3 @@ angular.module( 'ngBoilerplate')
 }])
 
 ;
-
-console.log('messages create end');

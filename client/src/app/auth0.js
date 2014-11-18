@@ -1,7 +1,6 @@
 angular.module( 'ngBoilerplate')
 
 .config(['authProvider', '$httpProvider', 'jwtInterceptorProvider', 'CONFIG', function configAuth0 ( authProvider, $httpProvider, jwtInterceptorProvider, CONFIG ) {
-    console.log(CONFIG);
     authProvider.init({
       domain: CONFIG.auth0.domain,
       clientID: CONFIG.auth0.clientId
