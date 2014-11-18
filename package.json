@@ -11,11 +11,12 @@
     "type": "MIT"
   },
   "devDependencies": {
+    "grunt-contrib-jasmine": "^0.8.1",
+    "grunt-contrib-watch": "^0.4.4",
+    "grunt-tape": "0.0.2",
     "jasmine": "^2.1.0",
     "phantomjs": "^1.9.12",
-    "tape": "^3.0.3",
-    "grunt-tape": "0.0.2",
-    "grunt-contrib-watch": "^0.4.4"
+    "tape": "^3.0.3"
   },
   "dependencies": {
     "acl": "^0.4.4",
