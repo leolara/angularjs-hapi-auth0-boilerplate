@@ -1,9 +1,10 @@
 angular.module( 'ngBoilerplate')
 
-.config(['authProvider', '$httpProvider', 'jwtInterceptorProvider', function configAuth0 ( authProvider, $httpProvider, jwtInterceptorProvider ) {
+.config(['authProvider', '$httpProvider', 'jwtInterceptorProvider', 'CONFIG', function configAuth0 ( authProvider, $httpProvider, jwtInterceptorProvider, CONFIG ) {
+    console.log(CONFIG);
     authProvider.init({
-      domain: 'leolara.auth0.com',
-      clientID: 'DSYK2m7YMqwY64IYOQWCXUSql9KhvqtE'
+      domain: CONFIG.auth0.domain,
+      clientID: CONFIG.auth0.clientId
     });
     jwtInterceptorProvider.tokenGetter = function(store) {
       return store.get('token');

@@ -90,3 +90,15 @@ module.exports = {
     ]
   },
 };
+
+// Load configuration
+var nconf = require('nconf');
+nconf.env('_');
+nconf.file({file: 'config/server.json'});
+
+module.exports.CONFIG = {
+  auth0: {
+    domain: nconf.get('auth0:domain'),
+    clientId: nconf.get('auth0:clientId')
+  }
+};

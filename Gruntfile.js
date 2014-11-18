@@ -167,6 +167,14 @@ module.exports = function ( grunt ) {
             dest: '<%= compile_dir %>/src/app/auth0.js'
           }
         ]
+      },
+      config_js: {
+        files: [
+          {
+            src: 'build/src/app/config.js',
+            dest: '<%= compile_dir %>/src/app/config.js'
+          }
+        ]
       }
     },
 
@@ -198,6 +206,7 @@ module.exports = function ( grunt ) {
           'module.prefix',
           '<%= build_dir %>/src/**/*.js',
           '!<%= build_dir %>/src/app/auth0.js',
+          '!<%= build_dir %>/src/app/config.js',
           '<%= html2js.app.dest %>', 
           '<%= html2js.common.dest %>', 
           'module.suffix' 
@@ -393,6 +402,7 @@ module.exports = function ( grunt ) {
           'vendor/auth0-lock/build/auth0-lock.js',
           '<%= concat.compile_js.dest %>',
           'src/app/auth0.js',
+          '<%= compile_dir %>/src/app/config.js',
           '<%= vendor_files.css %>',
           '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css'
         ]
@@ -539,6 +549,11 @@ module.exports = function ( grunt ) {
         output: 'console'
       },
       files: ['../test/**/*.js']
+    },
+    config_js: {
+      build: {
+
+      }
     }
   };
 
@@ -565,7 +580,7 @@ module.exports = function ( grunt ) {
   grunt.registerTask( 'build', [
     'clean', 'html2js', 'coffee', 'less:build',
     'concat:build_css', 'copy:build_app_assets', 'copy:build_vendor_assets',
-    'copy:build_appjs', 'copy:build_vendorjs', 'index:build'
+    'copy:build_appjs', 'copy:build_vendorjs', 'config_js:build', 'index:build'
   ]);
 
   /**
@@ -573,7 +588,7 @@ module.exports = function ( grunt ) {
    * minifying your code.
    */
   grunt.registerTask( 'compile', [
-    'less:compile', 'copy:compile_assets', 'copy:auth0_lock', 'copy:auth0_app', 'ngAnnotate', 'concat:compile_js', 'uglify',  'index:compile'
+    'less:compile', 'copy:compile_assets', 'copy:auth0_lock', 'copy:auth0_app', 'copy:config_js', 'ngAnnotate', 'concat:compile_js', 'uglify',  'index:compile'
   ]);
 
   grunt.registerTask('test', ['tape', 'jasmine']);
@@ -618,6 +633,20 @@ module.exports = function ( grunt ) {
             scripts: jsFiles,
             styles: cssFiles,
             version: grunt.config( 'pkg.version' )
+          }
+        });
+      }
+    });
+  });
+
+  grunt.registerMultiTask( 'config_js', 'Process config.js template', function () {
+    var config = grunt.config('CONFIG');
+
+    grunt.file.copy('config.tpl.js', grunt.config('build_dir') + '/src/app/config.js', {
+      process: function ( contents, path ) {
+        return grunt.template.process( contents, {
+          data: {
+            config: config
           }
         });
       }
