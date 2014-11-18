@@ -2,7 +2,7 @@
   "name": "angularjs-hapi-auth0-boilerplate",
   "version": "0.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server/server.js",
   "scripts": {
     "postinstall": "node_modules/.bin/bower install && node_modules/.bin/grunt"
   },
