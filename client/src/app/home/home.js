@@ -23,7 +23,7 @@ angular.module( 'ngBoilerplate')
   $stateProvider.state( 'home', {
     url: '/',
     views: {
-      "main": {
+      'main': {
         controller: 'HomeCtrl',
         templateUrl: 'home/home.tpl.html'
       }

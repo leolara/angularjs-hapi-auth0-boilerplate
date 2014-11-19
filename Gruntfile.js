@@ -308,13 +308,24 @@ module.exports = function ( grunt ) {
         'Gruntfile.js'
       ],
       options: {
-        curly: true,
-        immed: true,
-        newcap: true,
-        noarg: true,
-        sub: true,
-        boss: true,
-        eqnull: true
+        "node": true,
+        "esnext": true,
+        "bitwise": true,
+        "eqeqeq": true,
+        "eqnull": true,
+        "immed": true,
+        "indent": 4,
+        "latedef": "nofunc",
+        "newcap": true,
+        "nonew": true,
+        "noarg": true,
+        "quotmark": "single",
+        "regexp": true,
+        "undef": true,
+        "predef": ['angular', '_', 'describe', 'beforeEach', 'it', 'expect', 'inject'],
+        "unused": false,
+        "trailing": true,
+        "sub": true
       },
       globals: {}
     },

@@ -1,5 +1,6 @@
 
 var Auth0 = require('auth0');
+var Boom = require('boom');
 
 module.exports = function (server, config, User, acl, cb) {
 

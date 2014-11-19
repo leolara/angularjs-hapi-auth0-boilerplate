@@ -4,7 +4,7 @@ module.exports = function (server, mountpoint, User, acl) {
     var Handler = new (require('../../workarround/hapi-mongoose-handler'))({model: User});
 
     server.route({
-        method: "GET",
+        method: 'GET',
         path: mountpoint + '/users',
         config: {
             handler: acl.hapiAllowed('users', 'list', Handler.find()),
@@ -13,7 +13,7 @@ module.exports = function (server, mountpoint, User, acl) {
     });
 
     server.route({
-        method: "POST",
+        method: 'POST',
         path: mountpoint + '/users',
         config: {
             handler: acl.hapiAllowed('users', 'create', Handler.create()),
@@ -22,7 +22,7 @@ module.exports = function (server, mountpoint, User, acl) {
     });
 
     server.route({
-        method: "GET",
+        method: 'GET',
         path: mountpoint + '/users/{_id}',
         config: {
             handler: acl.hapiAllowed('users', 'read', Handler.findOne()),
@@ -31,7 +31,7 @@ module.exports = function (server, mountpoint, User, acl) {
     });
 
     server.route({
-        method: "PUT",
+        method: 'PUT',
         path: mountpoint + '/users',
         config: {
             handler: acl.hapiAllowed('users', 'update', Handler.update()),
@@ -40,7 +40,7 @@ module.exports = function (server, mountpoint, User, acl) {
     });
 
     server.route({
-        method: "DELETE",
+        method: 'DELETE',
         path: mountpoint + '/users/{_id}',
         config: {
             handler: acl.hapiAllowed('users', 'delete',Handler.delete()), // jshint ignore:line

@@ -3,7 +3,7 @@ var ACL = require('acl');
 var Boom = require('boom');
 
 module.exports = function (server, db) {
-    acl = new ACL(new ACL.mongodbBackend(db.mongodb, 'acl_'));
+    var acl = new ACL(new ACL.mongodbBackend(db.mongodb, 'acl_'));
 
     // TODO: move ACL to REST API instead of hardcoding here
     acl.allow('admin', 'users', '*');

@@ -4,7 +4,7 @@ angular.module( 'ngBoilerplate')
     $stateProvider.state( 'messages_create', {
         url: '/messages/new',
         views: {
-            "main": {
+            'main': {
                 controller: 'MessagesCreateCtrl',
                 templateUrl: 'messages/create.tpl.html'
             }
