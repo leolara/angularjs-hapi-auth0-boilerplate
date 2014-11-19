@@ -12,7 +12,7 @@ angular.module( 'ngBoilerplate')
     $httpProvider.interceptors.push('jwtInterceptor');
 }])
 
-.run(['$rootScope', 'auth', 'store', 'jwtHelper', '$location', function runAuth0 ( $rootScope, auth, store, jwtHelper, $location ) {
+.run(['$rootScope', 'auth', 'store', 'jwtHelper', '$location', '$http', function runAuth0 ( $rootScope, auth, store, jwtHelper, $location ) {
 
   auth.hookEvents();
 
@@ -29,30 +29,6 @@ angular.module( 'ngBoilerplate')
       }
     }
   });
-
-
-
-  $rootScope.login = function() {
-    auth.signin({}, function(profile, token) {
-      // Success callback
-      store.set('profile', profile);
-      store.set('token', token);
-      // It seems in some browsers you need to do this in order to store it
-      store.get('profile');
-      store.get('token');
-      $location.path('/');
-    }, function() {
-      // Error callback
-    });
-  };
-
-  $rootScope.logout = function() {
-    auth.signout();
-    store.remove('profile');
-    store.remove('token');
-  };
-
-  $rootScope.auth = auth;
 }])
 
 ;

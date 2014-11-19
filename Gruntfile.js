@@ -463,7 +463,7 @@ module.exports = function ( grunt ) {
         files: [ 
           '<%= app_files.js %>'
         ],
-        tasks: [ 'jshint:src', 'test', 'copy:build_appjs' ]
+        tasks: [ 'copy:build_appjs' ]
       },
 
       /**
@@ -474,7 +474,7 @@ module.exports = function ( grunt ) {
         files: [ 
           '<%= app_files.coffee %>'
         ],
-        tasks: [ 'coffeelint:src', 'coffee:source', 'test', 'copy:build_appjs' ]
+        tasks: [ 'coffee:source', 'copy:build_appjs' ]
       },
 
       /**

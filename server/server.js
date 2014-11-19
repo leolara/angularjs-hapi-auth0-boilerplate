@@ -19,17 +19,10 @@ var db = require('./boot/db')(nconf, false, function (err, db) {
     var acl = require('./boot/acl')(server, db);
 
     require('./boot/auth0')(server, nconf, db.models.User, acl, function (err) {
-
         if (err) {
             server.log(['auth0', 'error'], err);
             return;
         }
-
-        var defaultHandler = function (request, reply) {
-            reply('success');
-        };
-
-        server.route({method: 'GET', path: '/testauth', handler: defaultHandler, config: {auth: 'auth0'}});
 
         require('./api')(server, db, acl);
 

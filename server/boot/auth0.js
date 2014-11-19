@@ -63,8 +63,23 @@ module.exports = function (server, config, User, acl, cb) {
             key: new Buffer(config.get('auth0:clientSecret'), 'base64')
         });
 
+        server.route({
+            path: '/api/auth0/userroles',
+            method: 'GET',
+            config: {
+                auth: 'auth0',
+                handler: function (req, reply) {
+                    acl.userRoles(req.auth.credentials._id.toString(), function (err, roles) {
+                        if (err) {
+                            server.log(['auth0', 'error', 'roles'], err);
+                            return reply(Boom.badImplementation());
+                        }
+                        reply(roles);
+                    });
+                }
+            }
+        });
+
         return cb();
     });
 };
-
-

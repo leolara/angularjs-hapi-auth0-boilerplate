@@ -71,7 +71,8 @@ module.exports = {
       'vendor/a0-angular-storage/dist/angular-storage.js',
       'vendor/angular-jwt/dist/angular-jwt.js',
       'vendor/auth0-angular/build/auth0-angular.js',
-      'vendor/angular-resource/angular-resource.js'
+      'vendor/angular-resource/angular-resource.js',
+      'vendor/underscore/underscore.js'
     ],
     js_concat: [
       'vendor/angular/angular.js',
@@ -82,7 +83,8 @@ module.exports = {
       'vendor/a0-angular-storage/dist/angular-storage.js',
       'vendor/angular-jwt/dist/angular-jwt.js',
       'vendor/auth0-angular/build/auth0-angular.js',
-      'vendor/angular-resource/angular-resource.js'
+      'vendor/angular-resource/angular-resource.js',
+      'vendor/underscore/underscore.js'
     ],
     css: [
     ],
