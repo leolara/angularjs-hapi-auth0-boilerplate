@@ -55,6 +55,12 @@
                 Create Message
               </a>
             </li>
+            <li ng-show="auth.isAuthenticated && isAdmin" ui-sref-active="active">
+              <a href ui-sref="users_list">
+                <i class="fa fa-users"></i>
+                User management
+              </a>
+            </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li ng-show="auth.isAuthenticated">

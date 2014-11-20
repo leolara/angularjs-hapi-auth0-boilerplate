@@ -13,11 +13,12 @@ angular.module( 'ngBoilerplate')
     });
 }])
 
-.controller('MessagesCreateCtrl', ['$scope', 'Message', function ( $scope, Message ) {
+.controller('MessagesCreateCtrl', ['$scope', 'Message', '$location', function ( $scope, Message, $location ) {
     $scope.content = '';
     $scope.save = function () {
         var message = new Message({content: $scope.content });
         message.$save();
+        $location.path('/');
     };
 }])
 
