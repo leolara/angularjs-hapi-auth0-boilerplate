@@ -6,7 +6,7 @@ nconf.file({file: 'config/server.json'});
 
 // Create Hapi server
 var Hapi = require('hapi');
-var server = new Hapi.Server(process.env.PORT || nconf.get('server:port'));
+var server = new Hapi.Server(process.env.PORT || nconf.get('SERVER:PORT'));
 
 // Logging system
 require('./boot/good')(server);

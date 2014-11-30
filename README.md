@@ -54,11 +54,11 @@ Also the tests are run, they might fail if you didn't set up correctly ``mongodb
 You should set up four environment variables in order to run the grunt build system and the Hapi server.
 
 ```
-export auth0_domain="yyygdljsagskljhsakhasdkhsadkhkdashksdah"
-export auth0_clientId="asghdasjd"
-export auth0_clientSecret="ajlhsa
-export mongodb_uri="mongodb://192.168.59.103:49153/boilerplate"
-export mongodb_testUri="mongodb://192.168.59.103:49153/tests".auth0.com"
+export AUTH0_DOMAIN="yyygdljsagsklj.auth0.com"
+export AUTH0_CLIENTID="asghdasjd"
+export AUTH0_CLIENTSECRET="ajlhsaasasdasdasddsasdasdadsaa"
+export MONGODB_URI="mongodb://192.168.59.103:49153/boilerplate"
+export MONGODB_TESTURI="mongodb://192.168.59.103:49153/tests"
 ```
 
 ### Build client in development mode
@@ -102,10 +102,10 @@ grunt jshint
 To deploy to heroku, it is like any other Node app, just push the code. The only thing to remember isto set up the enviroment variable in herku.
 
 ```
-heroku config:set auth0_domain="yyygdljsagskljhsakhasdkhsadkhkdashksdah"
-heroku config:set auth0_clientId="asghdasjd"
-heroku config:set auth0_clientSecret="ajlhsa
-heroku config:set mongodb_uri="mongodb://192.168.59.103:49153/boilerplate"
+heroku config:set AUTH0_DOMAIN="yyygdljsagskljhsakhasdkhsadkhkdashksdah"
+heroku config:set AUTH0_CLIENTID="asghdasjd"
+heroku config:set AUTH0_CLIENTSECRET="ajlhsa
+heroku config:set MONGODB_URI="mongodb://192.168.59.103:49153/boilerplate"
 ```
 
 The scripts are set up, so Heroku will automatically install all dependencies and build the client application.

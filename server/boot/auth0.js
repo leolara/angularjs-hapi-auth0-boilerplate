@@ -5,9 +5,9 @@ var Boom = require('boom');
 module.exports = function (server, config, User, acl, cb) {
 
     var auth0_api = new Auth0({
-        domain:       config.get('auth0:domain'),
-        clientID:     config.get('auth0:clientId'),
-        clientSecret: config.get('auth0:clientSecret')
+        domain:       config.get('AUTH0:DOMAIN'),
+        clientID:     config.get('AUTH0:CLIENTID'),
+        clientSecret: config.get('AUTH0:CLIENTSECRET')
     });
 
     function findUser(auth0_user, cb) {
@@ -61,7 +61,7 @@ module.exports = function (server, config, User, acl, cb) {
                     });
                 });
             },
-            key: new Buffer(config.get('auth0:clientSecret'), 'base64')
+            key: new Buffer(config.get('AUTH0:CLIENTSECRET'), 'base64')
         });
 
         server.route({
