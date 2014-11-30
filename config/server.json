@@ -1,15 +1,15 @@
 {
-  "auth0": {
-    "domain": "SET",
-    "clientId": "SET",
-    "clientSecret": "SET"
+  "AUTH0": {
+    "DOMAIN": "SET",
+    "CLIENTID": "SET",
+    "CLIENTSECRET": "SET"
   },
-  "mongodb": {
-    "uri": "mongodb://localhost/boilerplate",
-    "testUri": "mongodb://localhost/test"
+  "MONGODB": {
+    "URI": "mongodb://localhost/boilerplate",
+    "TESTURI": "mongodb://localhost/test"
   },
-  "server": {
-    "host": "localhost",
-    "port": "3000"
+  "SERVER": {
+    "HOST": "localhost",
+    "PORT": "3000"
   }
 }

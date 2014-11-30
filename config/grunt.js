@@ -90,7 +90,7 @@ module.exports = {
     ],
     assets: [
     ]
-  },
+  }
 };
 
 // Load configuration
@@ -100,7 +100,7 @@ nconf.file({file: 'config/server.json'});
 
 module.exports.CONFIG = {
   auth0: {
-    domain: nconf.get('auth0:domain'),
-    clientId: nconf.get('auth0:clientId')
+    domain: nconf.get('AUTH0:DOMAIN'),
+    clientId: nconf.get('AUTH0:CLIENTID')
   }
 };
