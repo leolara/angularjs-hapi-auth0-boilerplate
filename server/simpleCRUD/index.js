@@ -16,7 +16,7 @@ function create(Model) {
             }
             return reply(model);
         });
-    }
+    };
 }
 
 function read(Model) {
@@ -31,7 +31,7 @@ function read(Model) {
             }
             return reply(model);
         });
-    }
+    };
 }
 
 function update(Model) {
@@ -39,7 +39,7 @@ function update(Model) {
     return function (request, reply) {
         return reader(request, function (model) {
             if (model.isBoom) { // handles error reading
-                return eply(model)
+                return reply(model);
             }
 
             model.set(request.payload);
@@ -50,7 +50,7 @@ function update(Model) {
                 return reply(model);
             });
         });
-    }
+    };
 }
 
 function destroy(Model) {
@@ -58,7 +58,7 @@ function destroy(Model) {
     return function (request, reply) {
         return reader(request, function (model) {
             if (model.isBoom) { // handles error reading
-                return reply(model)
+                return reply(model);
             }
 
             return model.remove(function(err) {
@@ -69,7 +69,7 @@ function destroy(Model) {
                 return reply(model);
             });
         });
-    }
+    };
 }
 
 function list(Model) {
@@ -81,7 +81,7 @@ function list(Model) {
 
             return reply(models);
         });
-    }
+    };
 }
 
 module.exports = function (options) {
